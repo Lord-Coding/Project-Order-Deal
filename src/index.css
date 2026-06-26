@@ -1,111 +1,210 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+/* ==========================================
+   ORDERDEAL DESIGN TOKENS (HSL format)
+   ========================================== */
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    /* Brand */
+    --primary: 24 95% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 27 96% 61%;
+
+    --secondary: 48 100% 96%;
+    --secondary-foreground: 30 8% 25%;
+
+    --accent: 48 96% 53%;
+    --accent-foreground: 30 9% 15%;
+
+    --coral: 4 92% 69%;
+    --coral-foreground: 0 0% 100%;
+
+    /* Neutrals */
+    --background: 30 14% 97%;
+    --foreground: 30 9% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 30 9% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 9% 15%;
+
+    --muted: 30 6% 96%;
+    --muted-foreground: 25 5% 45%;
+
+    /* Status */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+
+    /* Borders & rings */
+    --border: 24 6% 90%;
+    --input: 24 6% 90%;
+    --ring: 24 95% 53%;
+
+    --radius: 1rem;
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(24 95% 53% / 0.15);
+    --shadow-card: 0 8px 30px -8px hsl(30 9% 15% / 0.08);
+    --shadow-elevated: 0 20px 50px -12px hsl(30 9% 15% / 0.15);
+    --shadow-glow: 0 0 40px hsl(24 95% 53% / 0.25);
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 30 8% 25%;
+    --sidebar-primary: 24 10% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 30 6% 96%;
+    --sidebar-accent-foreground: 24 10% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217 91% 60%;
   }
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  .dark {
+    --primary: 24 94% 61%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 27 96% 70%;
+
+    --secondary: 20 6% 15%;
+    --secondary-foreground: 24 6% 90%;
+
+    --accent: 48 89% 50%;
+    --accent-foreground: 24 10% 10%;
+
+    --coral: 351 95% 71%;
+    --coral-foreground: 0 0% 100%;
+
+    --background: 24 10% 10%;
+    --foreground: 30 6% 96%;
+
+    --card: 20 6% 15%;
+    --card-foreground: 30 6% 96%;
+
+    --popover: 20 6% 15%;
+    --popover-foreground: 30 6% 96%;
+
+    --muted: 240 4% 26%;
+    --muted-foreground: 240 5% 65%;
+
+    --success: 142 76% 56%;
+    --destructive: 0 73% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --warning: 43 96% 56%;
+    --warning-foreground: 24 10% 10%;
+    --info: 213 94% 68%;
+
+    --border: 240 4% 26%;
+    --input: 240 4% 26%;
+    --ring: 24 94% 61%;
+
+    --shadow-soft: 0 4px 20px -4px hsl(24 94% 61% / 0.2);
+    --shadow-card: 0 8px 30px -8px hsl(0 0% 0% / 0.4);
+    --shadow-elevated: 0 20px 50px -12px hsl(0 0% 0% / 0.5);
+    --shadow-glow: 0 0 40px hsl(24 94% 61% / 0.3);
+
+    --sidebar-background: 24 10% 10%;
+    --sidebar-foreground: 30 6% 96%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 20 6% 15%;
+    --sidebar-accent-foreground: 30 6% 96%;
+    --sidebar-border: 240 4% 26%;
+    --sidebar-ring: 217 91% 60%;
   }
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+@layer base {
+  * {
+    @apply border-border;
+  }
 
-body {
-  margin: 0;
-}
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Nunito', system-ui, -apple-system, sans-serif;
+  }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    @apply font-bold tracking-tight;
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+/* Smooth theme transitions */
+*,
+*::before,
+*::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================
+   LAYOUT HELPERS (page wrappers)
+   ========================================== */
+@layer components {
+  .home-page,
+  .notifications-page,
+  .change-password-page,
+  .settings-page,
+  .profile-page,
+  .profile-edit-page,
+  .addresses-page,
+  .auth-page,
+  .explore-page,
+  .cart-page,
+  .orders-page,
+  .favorites-page,
+  .food-detail-page,
+  .tracking-page,
+  .reviews-page,
+  .support-page,
+  .restaurant-page {
+    @apply min-h-screen bg-background pb-24;
   }
-}
-p {
-  margin: 0;
-}
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
+  .home-main,
+  .notifications-main,
+  .change-password-content,
+  .settings-content,
+  .explore-main,
+  .cart-main,
+  .orders-main,
+  .favorites-main,
+  .reviews-main,
+  .support-main {
+    @apply w-full mx-auto px-4 py-4 space-y-4
+           max-w-md sm:max-w-2xl sm:px-6 lg:max-w-4xl lg:px-8;
+  }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  .home-search {
+    @apply pt-2;
+  }
+
+  /* Category card backgrounds */
+  .category-orange { @apply bg-gradient-to-br from-orange-100 to-orange-50 dark:from-orange-900/40 dark:to-orange-950/30; }
+  .category-yellow { @apply bg-gradient-to-br from-yellow-100 to-amber-50 dark:from-yellow-900/40 dark:to-yellow-950/30; }
+  .category-amber  { @apply bg-gradient-to-br from-amber-100  to-yellow-50 dark:from-amber-900/40  dark:to-amber-950/30; }
+  .category-red    { @apply bg-gradient-to-br from-red-100    to-rose-50 dark:from-red-900/40    dark:to-red-950/30; }
+  .category-rose   { @apply bg-gradient-to-br from-rose-100   to-pink-50 dark:from-rose-900/40   dark:to-rose-950/30; }
+  .category-gold   { @apply bg-gradient-to-br from-amber-200  to-yellow-100 dark:from-amber-900/50 dark:to-yellow-950/30; }
+
+  /* Float animation used by HeroBanner */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+  .animate-float { animation: float 4s ease-in-out infinite; }
+
+  @keyframes scale-up {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .animate-scale-up { animation: scale-up 0.3s ease-out both; }
 }
